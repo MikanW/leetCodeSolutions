@@ -3,16 +3,13 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var moveZeroes = function (nums) {
-  nums.sort(function (a, b) {
-    return a - b;
-  });
-  let length = nums.length;
-  for (let i = 0; i < length; i++) {
-    if (nums[0] === 0) {
-      nums.shift();
-      nums.push(0);
+  let j = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === 0) {
+      j++;
     } else {
-      break;
+      [nums[i], nums[i - j]] = [nums[i - j], nums[i]];
     }
   }
   return;
